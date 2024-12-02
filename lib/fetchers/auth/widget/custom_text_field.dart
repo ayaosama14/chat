@@ -12,6 +12,7 @@ class CustomTextField extends StatelessWidget {
   String? Function(String?)? validator;
   void Function(String?)? onSaved;
   TextEditingController? myController;
+  TextInputType? keyboardType;
   CustomTextField(
       {super.key,
       required this.hint,
@@ -20,6 +21,7 @@ class CustomTextField extends StatelessWidget {
       this.onSaved,
       this.validator,
       this.isSecure = false,
+        this.keyboardType,
       this.myController});
 
   @override
@@ -29,6 +31,7 @@ class CustomTextField extends StatelessWidget {
       obscureText: isSecure!,
       onSaved: onSaved,
       controller: myController,
+      keyboardType: keyboardType,
       validator: validator,
       decoration: InputDecoration(
        prefixIcon: Icon(prefixIcon),

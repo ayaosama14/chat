@@ -11,7 +11,11 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(leading:IconButton(onPressed: (){
+        Navigator.of(context).pop();
+      }, icon: Icon(Icons.arrow_back_outlined))),
+    );
   }
 }
 //C:\Program Files\Java\jdk-21\bin  

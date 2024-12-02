@@ -1,9 +1,12 @@
 
 import 'package:flutter/material.dart';
 
-import 'fetchers/authintication/view/login_view.dart';
-import 'fetchers/authintication/view/register_view.dart';
-import 'fetchers/home/views/home_view.dart';
+import 'core/theme.dart';
+
+import 'fetchers/auth/view/login_view.dart';
+import 'fetchers/auth/view/register_view.dart';
+import 'fetchers/home/home/home_view.dart';
+
 
 class MyChatApp extends StatelessWidget {
   const MyChatApp({super.key});
@@ -11,9 +14,11 @@ class MyChatApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
+        debugShowCheckedModeBanner:false,
         title: 'Flutter chat app',
-        theme: ThemeData(scaffoldBackgroundColor: Colors.black12),
+        theme: appThemeLight(),
         initialRoute: LoginView.id,
         routes: {
           LoginView.id: (BuildContext context) =>  LoginView(),

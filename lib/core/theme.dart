@@ -13,12 +13,12 @@ ThemeData appThemeLight() {
 
           primary: AppColor.primColor, secondary: AppColor.secColor),
       textTheme: const TextTheme(
-        bodyLarge: AppStyle.boldColorTextStyle22,
+        titleLarge: TextStyle(fontSize: 22, color: Color(0xff0a2d40)),
         bodyMedium: AppStyle.boldBlackTextStyle20,
         // bodySmall: AppStyle.textStyle14,
-        displayLarge: AppStyle.boldBlackTextStyle20,
-        displayMedium: AppStyle.thinTextStyle16,
-        displaySmall: AppStyle.greyTextStyle12,
+        headlineLarge: AppStyle.boldBlackTextStyle20,
+        headlineMedium: AppStyle.thinTextStyle16,
+        headlineSmall: AppStyle.blueTextStyle12,
       ),
       appBarTheme: const AppBarTheme(
         elevation: 2,

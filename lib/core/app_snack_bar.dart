@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AppSnackBar {
-  static success(context) {
+  static success({required BuildContext context}) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Processing Data success'),duration: Duration(seconds: 3),
+  const      SnackBar(content: Text('Data processing correctly'),duration: Duration(seconds: 3),
       ),);
   }
 
-  static failure(context) {
+  static failure({context,required String text}) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Try Again'),duration: Duration(seconds: 3),),
+         SnackBar(content: Text(text) ,duration: const Duration(seconds: 4),
+      ),
     );
   }
 }
