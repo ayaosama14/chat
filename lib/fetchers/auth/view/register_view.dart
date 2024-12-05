@@ -44,7 +44,7 @@ class _RegisterViewState extends State<RegisterView> {
       create: (context) => AuthCubit(),
       child: Scaffold(
         body: Form(
-          autovalidateMode: AutovalidateMode.always,
+          // autovalidateMode: AutovalidateMode.always,
           child: Padding(
             padding: const EdgeInsets.all(18),
             child: ListView(
@@ -141,6 +141,8 @@ class _RegisterViewState extends State<RegisterView> {
                             email: emailController.text,
                             password: passwordController.text,
                           );
+                          print((credential.credential ?? null)
+                              .toString());
                           print("credential${credential.user}");
                           AppSnackBar.success(context: context);
                         } on FirebaseAuthException catch (e) {

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
   String hint;
-  IconData prefixIcon;
+  IconData ?prefixIcon;
   Widget? suffixIcon;
   bool? isSecure;
   String? Function(String?)? validator;
@@ -16,7 +16,7 @@ class CustomTextField extends StatelessWidget {
   CustomTextField(
       {super.key,
       required this.hint,
-      required this.prefixIcon,
+       this.prefixIcon,
       this.suffixIcon,
       this.onSaved,
       this.validator,

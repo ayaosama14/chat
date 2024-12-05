@@ -120,6 +120,7 @@ class LoginView extends StatelessWidget {
                       height: 40,
                       child: ElevatedButton(
                         onPressed: () async {
+                          // Navigator.pushNamed(context, HomeView.id);
                           try {
                             final credential = await FirebaseAuth.instance
                                 .signInWithEmailAndPassword(
