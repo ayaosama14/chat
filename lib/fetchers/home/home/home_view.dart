@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:chating_app/fetchers/auth/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/app_colors.dart';
 import '../../../core/chat_text.dart';
@@ -11,7 +12,7 @@ import '../../../core/spacer.dart';
 class HomeView extends StatefulWidget {
   static const String id = "home_view";
 
-  const HomeView({super.key});
+   HomeView({super.key});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -19,6 +20,8 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   @override
+  TextEditingController chatController=TextEditingController();
+ final supabase = Supabase.instance.client;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -36,30 +39,55 @@ class _HomeViewState extends State<HomeView> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: 15,
-                itemBuilder: (BuildContext context, int index) {
-                  return bubbleChat(
-                    text: 'hello aya how you doing gi',
-                    textColor: AppColor.white,
-                    containerChatColor: AppColor.mainChat,
-                  );
-                },
-              
-                // textChat(text: 'hello aya',
-                //   textColor: AppColor.white, containerChatColor: AppColor.mainChat,) ,
-                // spacerH12,
-                // textChat(text: 'hello im osama how are you',
-                //   textColor: AppColor.white, containerChatColor: AppColor.secChat,) ,
-              ),
-            ),
+            FutureBuilder(
+              future: null,
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            return  Expanded(
+                child: ListView.builder(
+                  itemCount: 15,
+                  itemBuilder: (BuildContext context, int index) {
+                    return bubbleChat(
+                      text: 'hello aya how you doing gi',
+                      textColor: AppColor.white,
+                      containerChatColor: AppColor.mainChat,
+                    );
+                  },
+
+                  // textChat(text: 'hello aya',
+                  //   textColor: AppColor.white, containerChatColor: AppColor.mainChat,) ,
+                  // spacerH12,
+                  // textChat(text: 'hello im osama how are you',
+                  //   textColor: AppColor.white, containerChatColor: AppColor.secChat,) ,
+                ),
+              );
+            },
+    ),
+
             spacerH6,
-            customSuffixTextField()
+
+            customSuffixTextField(
+             controller :chatController,
+                onPressed:() async {
+                // Select data with filters
+                  final data = await supabase
+                      .from('messages')
+                      .insert([
+                    { 'message': chatController.text  },
+                  ])
+                      .select();
+
+//osama saied 1-before sending message pic remanme it to uni code uni
+                  // 2. upload pic to storage
+                  //3. upload link to my database table
+                  
+                chatController.clear();
+
+              },
+            )
 
 
-          ],
-        ),
+          ],),
+
       ),
     );
   }

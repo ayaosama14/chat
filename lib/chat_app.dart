@@ -23,7 +23,7 @@ class MyChatApp extends StatelessWidget {
         routes: {
           LoginView.id: (BuildContext context) =>  LoginView(),
           RegisterView.id: (BuildContext context) => const RegisterView(),
-          HomeView.id: (BuildContext context) => const HomeView(),
+          HomeView.id: (BuildContext context) =>  HomeView(),
         },
         home:  LoginView());
   }
