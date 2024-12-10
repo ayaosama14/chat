@@ -19,6 +19,7 @@ ThemeData appThemeLight() {
         headlineLarge: AppStyle.boldBlackTextStyle20,
         headlineMedium: AppStyle.thinTextStyle16,
         headlineSmall: AppStyle.blueTextStyle12,
+          labelMedium: AppStyle.WhiteTextStyle12
       ),
       appBarTheme: const AppBarTheme(
         elevation: 2,

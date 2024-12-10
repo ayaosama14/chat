@@ -22,7 +22,8 @@ dependencies:
   firebase_auth: ^5.3.3
   firebase_messaging: ^15.1.5
   supabase_flutter: ^1.10.8
-
+  google_sign_in: ^6.2.2
+  google_sign_in_web: ^0.12.4+3
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -48,6 +49,7 @@ flutter:
   assets:
     - asset/image/logo.jpg
     - asset/image/logo2.png
+    - asset/image/google.png
    
 
   # An image asset can refer to one or more resolution-specific "variants", see

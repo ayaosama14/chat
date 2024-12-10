@@ -79,7 +79,13 @@ class _HomeViewState extends State<HomeView> {
 //osama saied 1-before sending message pic remanme it to uni code uni
                   // 2. upload pic to storage
                   //3. upload link to my database table
-                  
+                  //another solution:
+                  //     msg: "msg text......",
+                  //     attachment:[{
+                  //         path:"userImage/hjajshjashjash.jpg",
+                  //         uploadedDate: 2024-04-22
+                  //     }]
+                  // }
                 chatController.clear();
 
               },

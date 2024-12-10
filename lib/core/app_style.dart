@@ -19,8 +19,8 @@ class AppStyle {
       fontSize: 14.0,
       wordSpacing:4
   );
-  static const TextStyle greyTextStyle12= TextStyle(
-      color: Colors.grey,
+  static const TextStyle WhiteTextStyle12= TextStyle(
+      color: Colors.white,
       fontSize: 12.0);
   static const TextStyle blueTextStyle12= TextStyle(
       color: Colors.blue,

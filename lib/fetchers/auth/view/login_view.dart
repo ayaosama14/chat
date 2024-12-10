@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/app_const.dart';
 import '../../../core/app_snack_bar.dart';
@@ -95,7 +96,7 @@ class LoginView extends StatelessWidget {
                       myController: passwordController,
                       validator: (String? value) {
                         return (value!.isEmpty || value.length <= 6)
-                            ? "should_be_less_that_4_character"
+                            ? "should_be_less_that_8_character"
                             : null;
                       },
                       isSecure: isSecured,
@@ -120,23 +121,21 @@ class LoginView extends StatelessWidget {
                       height: 40,
                       child: ElevatedButton(
                         onPressed: () async {
-                          Navigator.pushNamed(context, HomeView.id);
-                          try {
-                            final credential = await FirebaseAuth.instance
-                                .signInWithEmailAndPassword(
-                                    email: emailController.text,
-                                    password: passwordController.text);
+                          context.read<AuthCubit>().singInWithEmail(
+                              email: emailController.text,
+                              password: passwordController.text,
+                              formKey: formKey);
+
+                          if (state is LoginUserSuccessState) {
                             AppSnackBar.success(context: context);
                             Navigator.pushNamed(context, HomeView.id);
-                          } on FirebaseAuthException catch (e) {
+                          }
+                          if (state is LoginUserFailedState) {
+                            // print("*** ${LoginUserFailedState().error}");
 
-                            if (e.code == 'user-not-found') {
-                              print('No user found for that email.');
-                              AppSnackBar.failure(text:'No user found for that email.');
-                            } else if (e.code == 'wrong-password') {
-                              print('Wrong password provided for that user.');
-                              AppSnackBar.failure(text:'Wrong password provided for that user.');
-                            }
+                            AppSnackBar.failure(
+                                context: context,
+                                text: "Invalid login credentials");
                           }
 
                           /* sing in with google or email firebase  */
@@ -161,6 +160,8 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                     ),
+                    //sing ingoogle buttom
+
                     spacerH20,
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       Text("Do not have account ? ",
@@ -175,6 +176,57 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                     ]),
+                    spacerH20,
+
+                    ElevatedButton(
+                      onPressed: () {
+                        //sing in with google
+                        context.read<AuthCubit>().signInWithGoogle();
+                      },
+                      child: SizedBox(
+                        height: 45,
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 80,),
+                            Image.asset("asset/image/google.png"),
+                            const SizedBox(width: 20,),
+                            Center(
+                              child: Text(
+                                "Sign in with google",
+                                style: Theme.of(context).textTheme.headlineSmall,
+                              ),
+                            ),spacerH20,
+                          ],
+                        ),
+                      ),
+                    ),
+                    //phone num
+                    spacerH20,
+
+                    ElevatedButton(
+                      onPressed: () {
+                        //sing in with google
+                        context.read<AuthCubit>().signInWithGoogle();
+                      },
+                      child: SizedBox(
+                        height: 45,
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 80,),
+                            const Icon(Icons.phone_android_rounded),
+
+                            const SizedBox(width: 20,),
+
+                            Center(
+                              child: Text(
+                                "Sign in with phone number",
+                                style: Theme.of(context).textTheme.headlineSmall,
+                              ),
+                            ),spacerH20,
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

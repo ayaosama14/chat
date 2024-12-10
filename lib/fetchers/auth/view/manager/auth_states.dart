@@ -12,4 +12,7 @@ final class UserLoadingState extends AuthStates {}
 final class UserCreatedSuccessState extends AuthStates {}
 final class UserCreatedFailedState extends AuthStates {}
 final class LoginUserSuccessState extends AuthStates {}
-final class LoginUserFailedState extends AuthStates {}
+final class LoginUserFailedState extends AuthStates {
+  LoginUserFailedState( {this.error});
+   String  ? error;
+}
