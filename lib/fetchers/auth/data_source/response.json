@@ -1,0 +1,54 @@
+{
+  "currentSession": {
+    "access_token": "eyJhbGciOiJIUzI1NiIsImtpZCI6IlFUS3paMDlqelRzeXYrS2wiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3ZicWRndWNvYmRnbWt5aWhxZ2pjLnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiIzY2RhYTUwOS00NzMwLTRkZmItYjYxMC1jMTgzYmRiYjAzMjEiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzMzNjY3MDkyLCJpYXQiOjE3MzM2NjM0OTIsImVtYWlsIjoiYXlhQGdtYWlsLmNvbSIsInBob25lIjoiIiwiYXBwX21ldGFkYXRhIjp7InByb3ZpZGVyIjoiZW1haWwiLCJwcm92aWRlcnMiOlsiZW1haWwiXX0sInVzZXJfbWV0YWRhdGEiOnt9LCJyb2xlIjoiYXV0aGVudGljYXRlZCIsImFhbCI6ImFhbDEiLCJhbXIiOlt7Im1ldGhvZCI6InBhc3N3b3JkIiwidGltZXN0YW1wIjoxNzMzNjYzNDkyfV0sInNlc3Npb25faWQiOiI1ZjVlNDRiNS04OWE1LTRkYTktODAyOS1iMTk5N2Q2OWQ3MjIiLCJpc19hbm9ueW1vdXMiOmZhbHNlfQ.w6TwyPKpdGOIxea87jXHsTuOB5YGfSxtwfaFrPEB26M",
+    "expires_in": 3600,
+    "refresh_token": "O3kY8fsy8txbGnexef4e0A",
+    "token_type": "bearer",
+    "provider_token": null,
+    "provider_refresh_token": null,
+    "user": {
+      "id": "3cdaa509-4730-4dfb-b610-c183bdbb0321",
+      "app_metadata": {
+        "provider": "email",
+        "providers": [
+          "email"
+        ]
+      },
+      "user_metadata": {},
+      "aud": "authenticated",
+      "confirmation_sent_at": null,
+      "recovery_sent_at": null,
+      "email_change_sent_at": null,
+      "new_email": null,
+      "invited_at": null,
+      "action_link": null,
+      "email": "aya@gmail.com",
+      "phone": "",
+      "created_at": "2024-12-08T12:28:38.480602Z",
+      "confirmed_at": "2024-12-08T12:28:38.498762Z",
+      "email_confirmed_at": "2024-12-08T12:28:38.498762Z",
+      "phone_confirmed_at": null,
+      "last_sign_in_at": "2024-12-08T13:11:32.666936866Z",
+      "role": "authenticated",
+      "updated_at": "2024-12-08T13:11:32.669879Z",
+      "identities": [
+        {
+          "id": "3cdaa509-4730-4dfb-b610-c183bdbb0321",
+          "user_id": "3cdaa509-4730-4dfb-b610-c183bdbb0321",
+          "identity_data": {
+            "email": "aya@gmail.com",
+            "email_verified": false,
+            "phone_verified": false,
+            "sub": "3cdaa509-4730-4dfb-b610-c183bdbb0321"
+          },
+          "provider": "email",
+          "created_at": "2024-12-08T12:28:38.491594Z",
+          "last_sign_in_at": "2024-12-08T12:28:38.491537Z",
+          "updated_at": "2024-12-08T12:28:38.491594Z"
+        }
+      ],
+      "factors": null
+    }
+  },
+  "expiresAt": 1733667092
+}

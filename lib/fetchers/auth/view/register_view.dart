@@ -82,12 +82,12 @@ class _RegisterViewState extends State<RegisterView> {
                 spacerH20,
                 CustomTextField(
                     hint: "name ",
-                    prefixIcon: Icons.person,
+                    prefixIcon:const Icon( Icons.person),
                     myController: nameController),
                 spacerH20,
                 CustomTextField(
                   hint: "email ",
-                  prefixIcon: Icons.email_outlined,
+                  prefixIcon: const Icon(Icons.email_outlined),
                   myController: emailController,
                   keyboardType: TextInputType.emailAddress,
                   onSaved: (String? value) {
@@ -103,7 +103,7 @@ class _RegisterViewState extends State<RegisterView> {
                 spacerH20,
                 CustomTextField(
                   hint: "password ",
-                  prefixIcon: Icons.lock,
+                  prefixIcon: const Icon(Icons.lock),
                   myController: passwordController,
                   validator: (String? value) {
                     return (value!.isEmpty || value.length <= 6)
@@ -141,7 +141,7 @@ class _RegisterViewState extends State<RegisterView> {
                             email: emailController.text,
                             password: passwordController.text,
                           );
-                          print((credential.credential ?? null)
+                          print((credential.credential)
                               .toString());
                           print("credential${credential.user}");
                           AppSnackBar.success(context: context);

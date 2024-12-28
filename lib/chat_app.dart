@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'core/theme.dart';
 
 import 'fetchers/auth/view/login_view.dart';
+import 'fetchers/auth/view/otp_view.dart';
+import 'fetchers/auth/view/phone_view.dart';
 import 'fetchers/auth/view/register_view.dart';
 import 'fetchers/home/home/home_view.dart';
 
@@ -23,7 +25,9 @@ class MyChatApp extends StatelessWidget {
         routes: {
           LoginView.id: (BuildContext context) =>  LoginView(),
           RegisterView.id: (BuildContext context) => const RegisterView(),
-          HomeView.id: (BuildContext context) =>  HomeView(),
+          HomeView.id: (BuildContext context) =>  const HomeView(),
+          PhoneView.id:(BuildContext context) =>PhoneView(),
+          OtpView.id:(BuildContext context) =>OtpView(),
         },
         home:  LoginView());
   }

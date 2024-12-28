@@ -1,0 +1,4 @@
+cd C:\Users\Admin\AppData\Local\Android\Sdk\emulator
+
+ emulator.exe -avd avd
+  emulator.exe -avd  small_phone

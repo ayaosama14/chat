@@ -9,5 +9,8 @@ SizedBox spacerH12 = const SizedBox(
 );
 SizedBox spacerH6 = const SizedBox(
   height: 6,
+);SizedBox spacerW20 = const SizedBox(
+  width:20,
 );
+
 

@@ -1,8 +1,6 @@
-import 'dart:ui';
 
-import 'package:chating_app/fetchers/auth/widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/app_colors.dart';
 import '../../../core/chat_text.dart';
@@ -12,7 +10,7 @@ import '../../../core/spacer.dart';
 class HomeView extends StatefulWidget {
   static const String id = "home_view";
 
-   HomeView({super.key});
+   const HomeView({super.key});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -21,7 +19,8 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   TextEditingController chatController=TextEditingController();
- final supabase = Supabase.instance.client;
+ // final supabase = Supabase.instance.client;
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -69,12 +68,12 @@ class _HomeViewState extends State<HomeView> {
              controller :chatController,
                 onPressed:() async {
                 // Select data with filters
-                  final data = await supabase
-                      .from('messages')
-                      .insert([
-                    { 'message': chatController.text  },
-                  ])
-                      .select();
+                //   final data = await supabase
+                //       .from('messages')
+                //       .insert([
+                //     { 'message': chatController.text  },
+                //   ])
+                //       .select();
 
 //osama saied 1-before sending message pic remanme it to uni code uni
                   // 2. upload pic to storage

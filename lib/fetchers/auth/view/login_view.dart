@@ -1,15 +1,13 @@
+import 'package:chating_app/fetchers/auth/view/phone_view.dart';
 import 'package:chating_app/fetchers/auth/view/register_view.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+
 
 import '../../../core/app_const.dart';
-import '../../../core/app_snack_bar.dart';
 import '../../../core/spacer.dart';
-import '../../home/home/home_view.dart';
 import '../widget/custom_text_field.dart';
 import 'manager/auth__cubit.dart';
 
@@ -76,7 +74,7 @@ class LoginView extends StatelessWidget {
                     spacerH20,
                     CustomTextField(
                       hint: "email",
-                      prefixIcon: Icons.email_outlined,
+                      prefixIcon: const Icon(Icons.email_outlined),
                       myController: emailController,
                       keyboardType: TextInputType.emailAddress,
                       onSaved: (String? value) {
@@ -92,7 +90,7 @@ class LoginView extends StatelessWidget {
                     spacerH20,
                     CustomTextField(
                       hint: "password ",
-                      prefixIcon: Icons.lock,
+                      prefixIcon:const Icon(Icons.lock) ,
                       myController: passwordController,
                       validator: (String? value) {
                         return (value!.isEmpty || value.length <= 6)
@@ -121,22 +119,22 @@ class LoginView extends StatelessWidget {
                       height: 40,
                       child: ElevatedButton(
                         onPressed: () async {
-                          context.read<AuthCubit>().singInWithEmail(
-                              email: emailController.text,
-                              password: passwordController.text,
-                              formKey: formKey);
-
-                          if (state is LoginUserSuccessState) {
-                            AppSnackBar.success(context: context);
-                            Navigator.pushNamed(context, HomeView.id);
-                          }
-                          if (state is LoginUserFailedState) {
-                            // print("*** ${LoginUserFailedState().error}");
-
-                            AppSnackBar.failure(
-                                context: context,
-                                text: "Invalid login credentials");
-                          }
+                          // context.read<AuthCubit>().singInWithEmail(
+                          //     email: emailController.text,
+                          //     password: passwordController.text,
+                          //     formKey: formKey);
+                          //
+                          // if (state is LoginUserSuccessState) {
+                          //   AppSnackBar.success(context: context);
+                          //   Navigator.pushNamed(context, HomeView.id);
+                          // }
+                          // if (state is LoginUserFailedState) {
+                          //   // print("*** ${LoginUserFailedState().error}");
+                          //
+                          //   AppSnackBar.failure(
+                          //       context: context,
+                          //       text: "Invalid login credentials");
+                          // }
 
                           /* sing in with google or email firebase  */
                           ////////////////////////////////////////////////////////////////////
@@ -181,7 +179,7 @@ class LoginView extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         //sing in with google
-                        context.read<AuthCubit>().signInWithGoogle();
+                        // context.read<AuthCubit>().signInWithGoogle();
                       },
                       child: SizedBox(
                         height: 45,
@@ -206,7 +204,7 @@ class LoginView extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         //sing in with google
-                        context.read<AuthCubit>().signInWithGoogle();
+                       Navigator.of(context).pushNamed(PhoneView.id);
                       },
                       child: SizedBox(
                         height: 45,

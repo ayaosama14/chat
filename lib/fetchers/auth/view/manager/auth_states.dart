@@ -16,3 +16,11 @@ final class LoginUserFailedState extends AuthStates {
   LoginUserFailedState( {this.error});
    String  ? error;
 }
+final class SignedPhoneSuccessState extends AuthStates {
+  String ? verificationId;
+  SignedPhoneSuccessState({this.verificationId});
+}
+final class SignedPhoneFailedState extends AuthStates {
+  String ? error;
+  SignedPhoneFailedState(this.error, );
+}
