@@ -11,11 +11,13 @@ final class UserLoadingState extends AuthStates {}
 
 final class UserCreatedSuccessState extends AuthStates {}
 final class UserCreatedFailedState extends AuthStates {}
-final class LoginUserSuccessState extends AuthStates {}
-final class LoginUserFailedState extends AuthStates {
-  LoginUserFailedState( {this.error});
+////////////////////////////////////////////
+final class SignInSuccessState extends AuthStates {}
+final class SignInFailedState extends AuthStates {
+  SignInFailedState( {this.error});
    String  ? error;
 }
+///////////////////////////////////
 final class SignedPhoneSuccessState extends AuthStates {
   String ? verificationId;
   SignedPhoneSuccessState({this.verificationId});

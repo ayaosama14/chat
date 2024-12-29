@@ -1,10 +1,10 @@
+import 'package:chating_app/core/app_snack_bar.dart';
 import 'package:chating_app/fetchers/auth/view/phone_view.dart';
 import 'package:chating_app/fetchers/auth/view/register_view.dart';
-
+import 'package:chating_app/fetchers/home/home/home_view.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 import '../../../core/app_const.dart';
 import '../../../core/spacer.dart';
@@ -90,7 +90,7 @@ class LoginView extends StatelessWidget {
                     spacerH20,
                     CustomTextField(
                       hint: "password ",
-                      prefixIcon:const Icon(Icons.lock) ,
+                      prefixIcon: const Icon(Icons.lock),
                       myController: passwordController,
                       validator: (String? value) {
                         return (value!.isEmpty || value.length <= 6)
@@ -119,22 +119,22 @@ class LoginView extends StatelessWidget {
                       height: 40,
                       child: ElevatedButton(
                         onPressed: () async {
-                          // context.read<AuthCubit>().singInWithEmail(
-                          //     email: emailController.text,
-                          //     password: passwordController.text,
-                          //     formKey: formKey);
-                          //
-                          // if (state is LoginUserSuccessState) {
-                          //   AppSnackBar.success(context: context);
-                          //   Navigator.pushNamed(context, HomeView.id);
-                          // }
-                          // if (state is LoginUserFailedState) {
-                          //   // print("*** ${LoginUserFailedState().error}");
-                          //
-                          //   AppSnackBar.failure(
-                          //       context: context,
-                          //       text: "Invalid login credentials");
-                          // }
+                          context.read<AuthCubit>().singInEmailAndPassword(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+
+                          if (state is SignInSuccessState) {
+                            AppSnackBar.success(context: context);
+                            Navigator.pushNamed(context, HomeView.id);
+                          }
+                          if (state is SignInFailedState) {
+                            // print("*** ${LoginUserFailedState().error}");
+
+                            AppSnackBar.failure(
+                                context: context,
+                                text: "Invalid login credentials");
+                          }
 
                           /* sing in with google or email firebase  */
                           ////////////////////////////////////////////////////////////////////
@@ -185,15 +185,21 @@ class LoginView extends StatelessWidget {
                         height: 45,
                         child: Row(
                           children: [
-                            const SizedBox(width: 80,),
+                            const SizedBox(
+                              width: 80,
+                            ),
                             Image.asset("asset/image/google.png"),
-                            const SizedBox(width: 20,),
+                            const SizedBox(
+                              width: 20,
+                            ),
                             Center(
                               child: Text(
                                 "Sign in with google",
-                                style: Theme.of(context).textTheme.headlineSmall,
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
                               ),
-                            ),spacerH20,
+                            ),
+                            spacerH20,
                           ],
                         ),
                       ),
@@ -204,23 +210,27 @@ class LoginView extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         //sing in with google
-                       Navigator.of(context).pushNamed(PhoneView.id);
+                        Navigator.of(context).pushNamed(PhoneView.id);
                       },
                       child: SizedBox(
                         height: 45,
                         child: Row(
                           children: [
-                            const SizedBox(width: 80,),
+                            const SizedBox(
+                              width: 80,
+                            ),
                             const Icon(Icons.phone_android_rounded),
-
-                            const SizedBox(width: 20,),
-
+                            const SizedBox(
+                              width: 20,
+                            ),
                             Center(
                               child: Text(
                                 "Sign in with phone number",
-                                style: Theme.of(context).textTheme.headlineSmall,
+                                style:
+                                    Theme.of(context).textTheme.headlineSmall,
                               ),
-                            ),spacerH20,
+                            ),
+                            spacerH20,
                           ],
                         ),
                       ),

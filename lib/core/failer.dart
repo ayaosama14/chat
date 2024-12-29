@@ -1,4 +1,4 @@
 class Failure {
   String failerMessage = '';
-  Failure();
+  Failure( {required this.failerMessage});
 }

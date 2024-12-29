@@ -3,13 +3,19 @@ import 'package:either_dart/either.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthDataSource {
-  Future<Either<Failure, User>> singInWithEmail(
+  Future<Either<Failure, User>> singInWithEmailAndPassword(
       {required String email, required String password});
 
-  Future<Either<Failure, User>> signInWithGoogle();
-  Future<Either<Failure, User>> loginWithEmailAndPassword({
+  
+
+  Future<Either<Failure, User>> createUserWithEmailAndPassword({
     required String email,
     required String password,
   });
+
+
+  Future<Either<Failure, User>> signInWithGoogle();
+
   Future<Either<Failure, User>> signInWithPhoneNumber({String? phoneNumber});
+  signOut();
 }

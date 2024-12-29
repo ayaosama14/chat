@@ -84,10 +84,10 @@ class PhoneView extends StatelessWidget {
                     height: 45,
                     child: ElevatedButton(
                       onPressed: () {
-                        context
-                            .read<AuthCubit>()
-                            .signInWithPhoneFirebase(phoneController!.text);
-                        print('**phone number is : ${phoneController?.text}');
+                        // context
+                        //     .read<AuthCubit>()
+                        //     .signInWithPhoneFirebase(phoneController!.text);
+                        // print('**phone number is : ${phoneController?.text}');
                         if (state is SignedPhoneSuccessState) {
                           AppSnackBar.success(context: context);
                           Navigator.of(context).pushNamed(
