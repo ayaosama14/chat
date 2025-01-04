@@ -14,7 +14,7 @@ abstract class AuthDataSource {
   });
 
 
-  Future<Either<Failure, User>> signInWithGoogle();
+   Future<UserCredential>  signInWithGoogle();
 
   Future<Either<Failure, User>> signInWithPhoneNumber({String? phoneNumber});
   signOut();

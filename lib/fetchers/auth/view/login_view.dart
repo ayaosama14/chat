@@ -131,26 +131,9 @@ class LoginView extends StatelessWidget {
                           if (state is SignInFailedState) {
                             // print("*** ${LoginUserFailedState().error}");
 
-                            AppSnackBar.failure(
-                                context: context,
+                            AppSnackBar.failure(context,
                                 text: "Invalid login credentials");
                           }
-
-                          /* sing in with google or email firebase  */
-                          ////////////////////////////////////////////////////////////////////
-                          // context.read<AuthCubit>().checkFormValed(
-                          //     formKey: formKey, context: context);
-                          // if (state is ValidationSuccessState) {
-                          //
-                          //   AppSnackBar.success(context);
-                          //   context.read<AuthCubit>().singIn(
-                          //       email: emailController.text,
-                          //       password: passwordController.text);
-                          // }
-                          // if (state is ValidationFailedState) {
-                          //   AppSnackBar.failure(context);
-                          // }
-                          /////////////////////////////////////////////////////////////////////
                         },
                         child: Text(
                           "sign in",
@@ -158,7 +141,6 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    //sing ingoogle buttom
 
                     spacerH20,
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -177,9 +159,16 @@ class LoginView extends StatelessWidget {
                     spacerH20,
 
                     ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         //sing in with google
-                        // context.read<AuthCubit>().signInWithGoogle();
+                        try {
+                          context.read<AuthCubit>().signInWithGoogle();
+                          if (state is SignedGoogleSuccessState) {
+                            Navigator.pushNamed(context, HomeView.id);
+                          }
+                        } catch (e) {
+                          AppSnackBar.failure(context, text: e.toString());
+                        }
                       },
                       child: SizedBox(
                         height: 45,

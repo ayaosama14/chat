@@ -82,7 +82,7 @@ class _RegisterViewState extends State<RegisterView> {
                 spacerH20,
                 CustomTextField(
                     hint: "name ",
-                    prefixIcon:const Icon( Icons.person),
+                    prefixIcon: const Icon(Icons.person),
                     myController: nameController),
                 spacerH20,
                 CustomTextField(
@@ -141,18 +141,17 @@ class _RegisterViewState extends State<RegisterView> {
                             email: emailController.text,
                             password: passwordController.text,
                           );
-                          print((credential.credential)
-                              .toString());
+                          print((credential.credential).toString());
                           print("credential${credential.user}");
                           AppSnackBar.success(context: context);
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
                             print('No user found for that email.');
-                            AppSnackBar.failure(
+                            AppSnackBar.failure(context,
                                 text: 'No user found for that email.');
                           } else if (e.code == 'wrong-password') {
                             print('Wrong password provided for that user.');
-                            AppSnackBar.failure(
+                            AppSnackBar.failure(context,
                                 text: 'Wrong password provided for that user.');
 
                             /////////////////////////////////////////////////////////////////////

@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:chating_app/core/failer.dart';
+import 'package:chating_app/fetchers/auth/data_source/firebase-auth_data_source.dart';
 import 'package:chating_app/fetchers/auth/repo/firebase_auth_repo.dart';
-import 'package:chating_app/fetchers/auth/repo/firebase_auth_repo.dart';
-import 'package:either_dart/either.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
 
@@ -14,8 +12,6 @@ class AuthCubit extends Cubit<AuthStates> {
   //use repo
   AuthCubit() : super(ValidationInitial());
 
-  // final supabase = Supabase.instance.client;
-  FirebaseAuth auth = FirebaseAuth.instance;
   final FireBaseRepoAuth _fireBaseRepoAuthInstance = FireBaseRepoAuth();
   singInEmailAndPassword(
       {required String email, required String password}) async {
@@ -32,5 +28,17 @@ class AuthCubit extends Cubit<AuthStates> {
         SignInSuccessState(),
       ),
     );
+  }
+
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      UserCredential userCred =
+          await FireBaseAuthDataSource().signInWithGoogle();
+      emit(SignedGoogleSuccessState());
+      return userCred;
+    } catch (e) {
+      emit(SignedGoogleFailedState());
+      return null;
+    }
   }
 }

@@ -95,7 +95,7 @@ class PhoneView extends StatelessWidget {
                                   as String);
                         }
                         if (state is SignedPhoneFailedState) {
-                          AppSnackBar.failure(text: state.error!);
+                          AppSnackBar.failure(context,text: state.error!);
                         }
                       },
                       child: Text(

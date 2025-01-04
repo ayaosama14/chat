@@ -1,8 +1,10 @@
+import 'package:chating_app/core/app_const.dart';
 import 'package:chating_app/core/failer.dart';
 import 'package:chating_app/fetchers/auth/data_source/auth_data_source.dart';
 
 import 'package:either_dart/src/either.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FireBaseAuthDataSource extends AuthDataSource {
   FirebaseAuth firebaseInst = FirebaseAuth.instance;
@@ -19,9 +21,7 @@ class FireBaseAuthDataSource extends AuthDataSource {
     }
   }
 
-  
-
- 
+////////////////////// createUserWithEmailAndPassword//////////////////////
   @override
   Future<Either<Failure, User>> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
@@ -40,27 +40,25 @@ class FireBaseAuthDataSource extends AuthDataSource {
     }
   }
 
+////////////////////////////signInWithGoogle/////////////////
+  @override
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   @override
-  Future<Either<Failure, User>> signInWithGoogle() {
-    // TODO: implement signInWithGoogle
-    throw UnimplementedError();
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    AppConst.google_access_token = credential.accessToken!;
+    AppConst.google_id_token = credential.idToken!;
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   @override
@@ -74,5 +72,4 @@ class FireBaseAuthDataSource extends AuthDataSource {
     // TODO: implement signOut
     throw UnimplementedError();
   }
-
 }

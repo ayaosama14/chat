@@ -26,3 +26,10 @@ final class SignedPhoneFailedState extends AuthStates {
   String ? error;
   SignedPhoneFailedState(this.error, );
 }
+//////////////////////////
+final class SignedGoogleSuccessState extends AuthStates {
+
+}
+final class SignedGoogleFailedState extends AuthStates {
+
+}
